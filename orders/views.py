@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic.edit import CreateView
+from django.views.generic.base import TemplateView
 
-# Create your views here.
+class Order_Create_View(TemplateView):
+    template_name = 'orders/order-create.html'
