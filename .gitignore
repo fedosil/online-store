@@ -1,7 +1,5 @@
 .idea
 db.sqlite3
-media
 .env
-/media/
 __pycache__/
 .flake8
