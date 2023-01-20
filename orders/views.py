@@ -9,4 +9,4 @@ class Order_Create_View(Title_Mixin, CreateView):
     template_name = 'orders/order-create.html'
     form_class = Order_Form
     success_url = reverse_lazy('orders:create')
-    title = 'Store - Оформление заказа'
+    # title = 'Store - Оформление заказа'
