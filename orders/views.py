@@ -10,3 +10,7 @@ class Order_Create_View(Title_Mixin, CreateView):
     form_class = Order_Form
     success_url = reverse_lazy('orders:create')
     title = 'Store - Оформление заказа'
+
+    def form_valid(self, form):
+        form.instance.initiator = self.request.user
+        return super(Order_Create_View, self).form_valid(form)
