@@ -1,11 +1,12 @@
 from django.views.generic.edit import CreateView
-from django.views.generic.base import TemplateView
+from django.urls import reverse_lazy
 
-from orders.models import Order
 from orders.forms import Order_Form
+from common.views import Title_Mixin
 
 
-class Order_Create_View(CreateView):
+class Order_Create_View(Title_Mixin, CreateView):
     template_name = 'orders/order-create.html'
-    # model = Order
     form_class = Order_Form
+    success_url = reverse_lazy('orders:create')
+    title = 'Store - Оформление заказа'
