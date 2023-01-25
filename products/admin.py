@@ -8,7 +8,7 @@ admin.site.register(Category)
 @admin.register(Product)
 class Product_admin(admin.ModelAdmin):
     list_display = ['name', 'price', 'quantity']
-    fields = ['name', 'description', ('price', 'quantity'), 'image', 'category']
+    fields = ['name', 'description', ('price', 'quantity'), 'image', 'stripe_price_id', 'category']
     readonly_fields = ['description']
 
 
