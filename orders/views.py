@@ -3,6 +3,8 @@ from http import HTTPStatus
 
 from django.views.generic.edit import CreateView
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.urls import reverse, reverse_lazy
 from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
@@ -24,6 +26,24 @@ class Success_View(Title_Mixin, TemplateView):
 class Cancel_View(TemplateView):
     template_name = 'orders/cancel.html'
 
+class OrderDetail_View(Title_Mixin, DetailView):
+    template_name = 'orders/order.html'
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderDetail_View, self).get_context_data(**kwargs)
+        context['title'] = f'Store - Заказ #{self.object.id}'
+        return context
+
+class OrderList_View(Title_Mixin, ListView):
+    template_name = 'orders/orders.html'
+    model = Order
+    title = 'Store - Заказы'
+    ordering = ('-created')
+
+    def get_queryset(self):
+        queryset = super(OrderList_View, self).get_queryset()
+        return queryset.filter(initiator=self.request.user)
 
 class Order_Create_View(Title_Mixin, CreateView):
     template_name = 'orders/order-create.html'
