@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from orders.models import Order
 
+
 @admin.register(Order)
 class Order_Admin(admin.ModelAdmin):
     list_display = ('__str__', 'status')

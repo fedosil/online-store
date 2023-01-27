@@ -1,14 +1,14 @@
-from http import HTTPStatus
 from datetime import timedelta
-
+from http import HTTPStatus
 
 from django.test import TestCase
 from django.urls import reverse
 from django.utils.timezone import now
 
-
 from users.forms import User_Register_Form
-from .models import User, Email_Verification
+
+from .models import Email_Verification, User
+
 
 class User_Registration_View_TestCase(TestCase):
 
