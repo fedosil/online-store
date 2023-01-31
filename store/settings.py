@@ -57,7 +57,7 @@ DEBUG = env('DEBUG')
 
 DOMAIN_NAME = env('DOMAIN_NAME')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['82.148.28.115']
 
 # Application definition
 
