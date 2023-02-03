@@ -20,11 +20,11 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-    description = models.TextField(null=True, unique=True)
+    name = models.CharField(max_length=128)
+    description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='product_images/%Y/%m/%d/')
+    image = models.ImageField(upload_to='product_images/%Y/%m/%d/', null=True, blank=True)
     stripe_price_id = models.CharField(max_length=128, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
 
