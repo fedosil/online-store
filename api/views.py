@@ -1,8 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
-from products.models import Product
-from products.serializers import ProductSerializer
+from products.models import Product, Basket
+from products.serializers import ProductSerializer, BasketSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -13,3 +13,13 @@ class ProductViewSet(ModelViewSet):
         if self.action in ('create', 'update', 'destroy',):
             self.permission_classes = (IsAdminUser,)
         return super(ProductViewSet, self).get_permissions()
+
+class BasketViewSet(ModelViewSet):
+    queryset = Basket.objects.all()
+    serializer_class = BasketSerializer
+    permission_classes = (IsAuthenticated,)
+    pagination_class = None
+
+    def get_queryset(self):
+        queryset = super(BasketViewSet, self).get_queryset()
+        return queryset.filter(user=self.request.user)
