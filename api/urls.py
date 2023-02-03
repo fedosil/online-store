@@ -1,11 +1,13 @@
-from django.urls import path
-from django.views.decorators.cache import cache_page
+from django.urls import path, include
+from rest_framework import routers
 
-from .views import ProductListApiView
+from .views import ProductViewSet
 
 app_name = 'api'
 
-urlpatterns = [
-    path('product-list/', ProductListApiView.as_view(), name='products_list'),
-]
+router = routers.DefaultRouter()
+router.register(r'products', ProductViewSet)
 
+urlpatterns = [
+    path('', include(router.urls)),
+]
