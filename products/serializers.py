@@ -11,7 +11,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class BasketSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
-    sum = fields.FloatField()
+    sum = fields.FloatField(required=False)
     total_sum = serializers.SerializerMethodField()
     total_quantity = serializers.SerializerMethodField()
     class Meta:
