@@ -5,8 +5,12 @@ The project for study Django.
 #### Stack:
 
 - [Python](https://www.python.org/downloads/)
+- [Django](https://www.djangoproject.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Redis](https://redis.io/)
+- [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+- [DRF](https://www.django-rest-framework.org/)
+- [Stripe](https://stripe.com/)
 
 ## Local Developing
 
